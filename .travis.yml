@@ -2,6 +2,11 @@ language: php
 
 php: [5.3, 5.4, 5.5]
 
+env:
+  - SF_VERSION='2.1.*'
+  - SF_VERSION='2.2.*'
+  - SF_VERSION='2.3.*@dev'
+
 before_script:
   - export WEB_FIXTURES_HOST=http://localhost/index.php
 
@@ -10,21 +15,24 @@ before_script:
   - sleep 4
 
   - curl http://selenium.googlecode.com/files/selenium-server-standalone-2.33.0.jar > selenium.jar
-  - java -jar selenium.jar > /dev/null &
+  - java -jar selenium.jar > selenium.log &
   - sleep 4
 
-  - curl http://switch.dl.sourceforge.net/project/sahi/sahi-v44/sahi_20130429.zip > sahi.zip
+  - curl http://garr.dl.sourceforge.net/project/sahi/sahi-v44/sahi_20130429.zip > sahi.zip
   - unzip sahi.zip > /dev/null
   - cd sahi/bin
-  - sh sahi.sh > /dev/null &
+  - sh sahi.sh > sahi.log &
   - cd -
   - sleep 4
 
+  - node --version
+  - npm --version
   - npm install zombie@0.12.15
   - export NODE_PATH="$(pwd)/node_modules"
   - export PATH="/usr/local/share/npm/bin:$PATH"
 
   - curl http://getcomposer.org/installer | php
+  - php composer.phar require --no-update symfony/framework-bundle=$SF_VERSION
   - php composer.phar install --prefer-source --dev
 
   - sudo apt-get update > /dev/null
@@ -33,3 +41,6 @@ before_script:
   - sudo /etc/init.d/apache2 restart
 
 script: phpunit -v
+after_failure:
+  - cat selenium.log
+  - cat sahi.log

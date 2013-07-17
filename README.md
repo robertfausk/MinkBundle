@@ -1,4 +1,4 @@
-# MinkBundle [![Build Status](https://api.travis-ci.org/Behat/MinkBundle.png?branch=master)](https://travis-ci.org/Behat/MinkBundle)
+# MinkBundle [![Build Status](https://api.travis-ci.org/Behat/MinkBundle.png)](https://travis-ci.org/Behat/MinkBundle)
 
 Provides Behat\Mink browser abstraction library for PHPUnit in Symfony2 project.
 
@@ -35,6 +35,7 @@ mink.browser_name: 'chrome'
 ## Documentation
 
 - [Installation](/Resources/doc/index.rst)
+- [Code coverage](/Resources/doc/coverage.rst)
 - [Mink Documentation](http://mink.behat.org)
 - [PHPUnit Documentation](http://www.phpunit.de/manual/current/en/index.html)
 
