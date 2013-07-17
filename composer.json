@@ -1,5 +1,5 @@
 {
-    "name": "behat/mink-bundle",
+    "name": "robertfausk/mink-bundle",
     "type": "symfony-bundle",
     "description": "Mink bundle for Symfony2",
     "keywords": ["web", "test", "browser"],
@@ -12,6 +12,10 @@
         {
             "name": "Konstantin Kudryashov",
             "email": "ever.zet@gmail.com"
+        },
+        {
+            "name": "Robert Freigang",
+            "email": "robert.freigang@marktjagd.de"
         }
     ],
 
